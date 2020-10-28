@@ -1,12 +1,12 @@
 const {CompanyTypes, createScraper} = require('israeli-bank-scrapers');
 
-exports.testScraper = async() => {
+exports.getTransactionsSince = async(date) => {
     try {
         const options = {
             companyId: CompanyTypes.leumi,
-            startDate: new Date('2020-10-28'),
+            startDate: date,
             combineInstallments: false,
-            showBrowser: true 
+            showBrowser: false
         };
 
         const credentials = {
@@ -27,4 +27,4 @@ exports.testScraper = async() => {
     } catch(e) {
         console.error(`scraping failed for the following reason: ${e.message}`);
     }
-}
+};

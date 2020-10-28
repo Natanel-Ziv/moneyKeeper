@@ -1,16 +1,18 @@
 {
-  "name": "moneykeeper",
+  "name": "moneyKeeper",
   "version": "1.0.0",
   "description": "Reads data from the bank and sends notification on new transaction",
-  "main": "app.js",
+  "main": "server/src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./server/src/app.js"
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GodisC00L/moneyKeeper.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -18,21 +20,15 @@
   },
   "homepage": "https://github.com/GodisC00L/moneyKeeper#readme",
   "devDependencies": {
-    "dotenv": "^8.2.0",
     "eslint": "^7.12.1",
-    "eslint-config-standard": "^15.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.2",
-    "nodemon": "^2.0.6",
-    "puppeteer-core": "^5.4.1"
+    "nodemon": "^2.0.6"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "http": "0.0.1-security",
-    "israeli-bank-scrapers": "^1.0.0",
-    "morgan": "^1.10.0"
+    "israeli-bank-scrapers": "^1.0.1-dev.75e939cd0",
+    "puppeteer": "^5.4.1",
+    "puppeteer-core": "^5.4.1"
   }
 }
