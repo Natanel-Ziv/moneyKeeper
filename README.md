@@ -2,8 +2,8 @@
 
 Reads data from the bank and sends notification on new transaction
 
-## Todos
+## Todo
 
-    [ ] Create simple ts with node js
-    [ ] Create simple app with Express
-    [ ] Get data from bank using https://github.com/Urigo/leumi-leumicard-bank-data-scraper/
+    [-] Create simple with node js
+    [-] Create simple app with Express
+    [ ] Get data from bank using https://github.com/eshaham/israeli-bank-scrapers
