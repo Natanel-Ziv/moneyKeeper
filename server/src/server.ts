@@ -1,16 +1,24 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
-import App from './app';
-import BankLeumi from './functions/bankLeumi';
-import Routes from './routes/routes';
-const port: number = parseInt(`${process.env.PORT}`, 10) || 3000;
+import {connectToDb} from './framework/models/dbModels';
+import {app} from './app';
+import {PORT} from './framework/environment';
+import {getTransactionsFromDate} from './functions/leumi.functions';
+import dbFuncs from './functions/db.functions';
+import {TransactionDocument} from './txn/txn.interfaces';
+import {startBot} from './functions/bot.functions';
 
-const leumi = new BankLeumi({
-  username: <string>process.env.LEUMI_USERNAME,
-  password: <string>process.env.LEUMI_PASSWORD
-}, new Date('2020-09-20'));
-leumi.getTransactionsFromDate();
+const port = PORT;
 
-const app = new App(new Routes, port);
-app.listen();
+connectToDb();
+startBot();
+app.listen(port, () => {
+  console.log(`App is listening on ${port}`);
+  //dbFuncs.deleteAllTxn();
+  //getTrans();
+});
 
+const getTrans = async() => {
+  const txns = await getTransactionsFromDate(new Date('2020-11-01'));
+  dbFuncs.addTxns(txns as TransactionDocument[]);
+};
