@@ -4,7 +4,7 @@
   "description": "Reads data from the bank and sends notification on new transaction",
   "main": "dist/server.js",
   "scripts": {
-    "prebuild": "eslint --ignore-path .gitignore .",
+    "prebuild": "eslint --ignore-path .gitignore",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node .",

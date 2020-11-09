@@ -30,5 +30,5 @@ const getTrans = async() => {
   //const txns = await getTransactionsFromDate(new Date('2020-11-01'));
   const txns = await getTransactionsFromDate(new Date('2020-11-01'));
   //console.log(txns);
-  dbFuncs.addTxns(txns as TransactionDocument[]);
+  //dbFuncs.addTxns(txns as TransactionDocument[]);
 };

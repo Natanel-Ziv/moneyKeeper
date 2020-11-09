@@ -23,4 +23,8 @@ const deleteAllTxn = (): void => {
   TxnModel.deleteMany({},()=>console.log('DB deleted'));
 };
 
+const setApproved = (id: string) => {
+  
+}
+
 export default {addTxns, getTxn, deleteAllTxn};
