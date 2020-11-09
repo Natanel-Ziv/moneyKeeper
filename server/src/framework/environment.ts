@@ -9,3 +9,4 @@ export const MONGO_USER = requiredString('MONGO_USER');
 export const MONGO_PASSWORD = requiredString('MONGO_PASSWORD');
 export const MONGO_PATH = requiredString('MONGO_PATH');
 export const TELEGRAM_BOT_TOKEN = requiredString('TELEGRAM_BOT_TOKEN');
+export const TELEGRAM_USER1 = env.get('TELEGRAM_USER1').asIntPositive();

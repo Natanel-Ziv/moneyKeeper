@@ -10,9 +10,10 @@ Reads data from the bank and sends notification on new transaction
 - [X] Create db in mongo containing all the transactions
 - [X] save new transaction to db
 - [X] Send first message with Telegram bot
-- [ ] Try to manage session on Telegram bot
+- [X] Try to manage session with one user only on Telegram bot
 - [ ] How to poll on new transactions? - cron jobs
 - [ ] Add reminder to check credit bills
+- [ ] Create Docker
 
 ## Noam Notes
 

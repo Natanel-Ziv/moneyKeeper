@@ -1,7 +1,7 @@
 import {TxnModel} from '../txn/txn.models';
 import {TransactionDocument} from '../txn/txn.interfaces';
 
-const addTxns = (txnArray: TransactionDocument[]): void => {
+const addTxns = (txnArray: TransactionDocument[]): Promise<void | (void | TransactionDocument | undefined)[]> => {
   const promiseList: Promise<void | TransactionDocument | undefined>[] = [];
   txnArray.forEach((txn) => {
     promiseList.push(TxnModel.findOne(txn)
@@ -9,8 +9,8 @@ const addTxns = (txnArray: TransactionDocument[]): void => {
         if(!data) TxnModel.create(txn);
       }));
   });
-  Promise.all(promiseList)
-    .then(() => console.log('All txns added'));
+  return Promise.all(promiseList)
+    .catch((err) => console.error(err));
 };
 
 const getTxn = async(txn?: TransactionDocument)

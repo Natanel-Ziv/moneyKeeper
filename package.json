@@ -1,5 +1,5 @@
 {
-  "name": "moneyKeeper",
+  "name": "money-keeper",
   "version": "1.0.0",
   "description": "Reads data from the bank and sends notification on new transaction",
   "main": "dist/server.js",

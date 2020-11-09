@@ -47,4 +47,6 @@ export interface Transaction {
 
 export interface TransactionDocument extends Transaction, Document {
   checkedByMe: boolean;
+  source: string;
+  accountNumber: string;
 }

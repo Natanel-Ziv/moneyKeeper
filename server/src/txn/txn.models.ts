@@ -41,7 +41,12 @@ const txnSchema = new mongoose.Schema({
     required: true
   },
   installments: {
-    type: String
+    number: {
+      type: Number
+    },
+    total: {
+      type: Number
+    }
   },
   checkedByMe: {
     type: Number,
@@ -54,6 +59,10 @@ const txnSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: 'unknown'
+  },
+  accountNumber: {
+    type: String,
+    required: false
   }
 });
 

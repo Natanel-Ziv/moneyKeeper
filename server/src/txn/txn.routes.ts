@@ -7,7 +7,6 @@ const router = express.Router();
 
 const getTxn = async(req: express.Request, res: express.Response, _next: express.NextFunction) => {
   const data = await txnDb.getTxn();
-  console.log(data);
   res.send(data);
 };
 

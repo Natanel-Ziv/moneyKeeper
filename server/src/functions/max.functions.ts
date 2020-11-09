@@ -1,12 +1,8 @@
 import {CompanyTypes, createScraper} from 'israeli-bank-scrapers';
-import LeumiScraper from 'israeli-bank-scrapers/lib/scrapers/leumi';
+import MaxScraper from 'israeli-bank-scrapers/lib/scrapers/max';
+import { LEUMI_PASSWORD, LEUMI_USERNAME } from '../framework/environment';
+import {ScraperCredentials} from './leumi.functions';
 import {TransactionDocument} from '../txn/txn.interfaces';
-import {LEUMI_USERNAME, LEUMI_PASSWORD} from '../framework/environment';
-
-export type ScraperCredentials = {
-  username: string,
-  password: string
-};
 
 const credentials: ScraperCredentials = {
   username: LEUMI_USERNAME,
@@ -14,16 +10,16 @@ const credentials: ScraperCredentials = {
 };
 
 const options = {
-  companyId: CompanyTypes.leumi,
+  companyId: CompanyTypes.max,
   startDate: new Date(),
   combineInstallments: false,
   showBrowser: true
 };
 
-const leumiScraper = createScraper(options) as LeumiScraper;
+const maxScraper = createScraper(options) as MaxScraper;
 
 const setDate = (date: Date) => {
-  leumiScraper.options.startDate = date;
+  maxScraper.options.startDate = date;
 };
 
 export const getTransactionsFromDate = async (date?: Date): Promise<TransactionDocument[]> => {
@@ -32,8 +28,8 @@ export const getTransactionsFromDate = async (date?: Date): Promise<TransactionD
     setDate(date);
   }
   try {
-    console.log('Running scraper on Leumi');
-    const scraperResult = await leumiScraper.scrape(credentials);
+    console.log('Running scraper on Max');
+    const scraperResult = await maxScraper.scrape(credentials);
     if(!scraperResult.success) {
       throw new Error(scraperResult.errorType);
     }
@@ -43,9 +39,9 @@ export const getTransactionsFromDate = async (date?: Date): Promise<TransactionD
       accTxns.forEach((txn) => {
         const txnDoc = txn as TransactionDocument;
         txnDoc.accountNumber = account.accountNumber;
-        txnDoc.source = 'Leumi';
+        txnDoc.source = 'Max';
         txns.push(txnDoc);
-        /* console.log(`Transaction: Date: ${txn.date} on amount of ${txn.chargedAmount}\
+        /*console.log(`Transaction: Date: ${txn.date} on amount of ${txn.chargedAmount}\
         \nDescription: ${txn.description}. ${txn.memo}`); */
       });
     });
